@@ -19,9 +19,9 @@ import { db } from './db'
  * seen if someone were to open the Web Inspector in their browser.
  */
 export const getCurrentUser = async (session) => {
-  return await db.user.findUnique({
+  return db.user.findUnique({
     where: { id: session.id },
-    select: { id: true },
+    select: { id: true, email: true },
   })
 }
 
