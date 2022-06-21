@@ -9,18 +9,21 @@ import Routes from 'src/Routes'
 import './scaffold.css'
 import './index.css'
 
-const App = () => (
-  <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
-      <AuthProvider type="dbAuth">
-        <RedwoodApolloProvider
-          graphQLClientConfig={{ uri: global.RWJS_API_GRAPHQL_URL }}
-        >
-          <Routes />
-        </RedwoodApolloProvider>
-      </AuthProvider>
-    </RedwoodProvider>
-  </FatalErrorBoundary>
-)
+const App = () => {
+  console.log(global.RWJS_API_GRAPHQL_URL)
+  return (
+    <FatalErrorBoundary page={FatalErrorPage}>
+      <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
+        <AuthProvider type="dbAuth">
+          <RedwoodApolloProvider
+            graphQLClientConfig={{ uri: global.RWJS_API_GRAPHQL_URL }}
+          >
+            <Routes />
+          </RedwoodApolloProvider>
+        </AuthProvider>
+      </RedwoodProvider>
+    </FatalErrorBoundary>
+  )
+}
 
 export default App
