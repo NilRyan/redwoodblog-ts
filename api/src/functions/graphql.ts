@@ -12,6 +12,10 @@ import { logger } from 'src/lib/logger'
 export const handler = createGraphQLHandler({
   getCurrentUser,
   loggerConfig: { logger, options: {} },
+  graphiQLEndpoint:
+    process.env.NODE_ENV === 'development'
+      ? '/.netlify/functions/graphql'
+      : '/graphql',
   directives,
   sdls,
   services,
