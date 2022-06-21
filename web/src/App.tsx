@@ -13,7 +13,9 @@ const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider type="dbAuth">
-        <RedwoodApolloProvider>
+        <RedwoodApolloProvider
+          graphQLClientConfig={{ uri: global.RWJS_API_GRAPHQL_URL }}
+        >
           <Routes />
         </RedwoodApolloProvider>
       </AuthProvider>
